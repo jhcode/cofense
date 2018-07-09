@@ -4,8 +4,8 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "my_log_bucket" {
-     bucket = "${var.my_log_bucket}"
-     acl = "log-delivery-write"
+  bucket = "${var.my_log_bucket}"
+  acl = "log-delivery-write"
 }
 
 resource "aws_s3_bucket" "my_bucket" {
@@ -20,4 +20,8 @@ resource "aws_s3_bucket" "my_bucket" {
 resource "aws_s3_bucket_policy" "policy" {
   bucket = "${aws_s3_bucket.my_bucket.id}"
   policy = "${data.template_file.policy.rendered}"
+}
+
+resource "aws_sns_topic" "sns_topic" {
+  name = "put-object-notifier"
 }

@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "assume-role-policy" {
 
     principals {
       type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
+      identifiers = ["s3.amazonaws.com"]
     }
   }
 }
